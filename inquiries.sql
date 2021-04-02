@@ -4,8 +4,18 @@ CREATE DATABASE movies;
 -- cambio a la base de datos
 \c movies
 
-CREATE TABLE movie(id INT, movie VARCHAR(100), release_year INT, director VARCHAR(50), PRIMARY KEY(id));
-CREATE TABLE cast(id INT, actor VARCHAR(50), FOREIGN KEY (id) REFERENCES movie(id));
+CREATE TABLE movie(
+    id INT, 
+    movie VARCHAR(100), 
+    release_year INT, 
+    director VARCHAR(50), 
+    PRIMARY KEY(id)
+    );
+
+CREATE TABLE cast(
+    id INT, 
+    actor VARCHAR(50), FOREIGN KEY (id) REFERENCES movie(id)
+    );
 
 \copy movie FROM 'peliculas.csv' csv header;
 \copy cast FROM 'cast.csv' csv;
